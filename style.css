@@ -32,7 +32,7 @@ body {
   /* text-align: center; */
   grid-template-columns: repeat(4, 1fr);
   display: grid;
-  border: 2px solid white;
+  border: 1px solid white;
 }
 .button {
   /* padding: 4rem; */
