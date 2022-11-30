@@ -12,8 +12,6 @@ let odabranaOperacija;
 //ZBRAJANJE
 
 const zbroj = function (broj1, broj2) {
-  broj1 = prviBroj;
-  broj2 = noviBroj;
   return broj1 + broj2;
 };
 
@@ -28,35 +26,36 @@ const množ = function (broj1, broj2) {
   return broj1 * broj2;
 };
 const dijeljenje = function (broj1, broj2) {
-  debugger;
   broj1 = prviBroj;
   broj2 = noviBroj;
   return broj1 / broj2;
 };
 let accum;
 let total;
-const operate = function (operator) {
+let temporary;
+
+const operate = function (operator, broj1, broj2) {
   if (!operator) return;
 
   switch (operator.toLowerCase()) {
     case '+':
       // console.log(zbroj());
-      total = zbroj();
+      temporary = broj1 + broj2;
       // return ;      break;
       break;
     case '-':
-      total = minus();
+      temporary = minus();
       break;
     case 'x':
     case '*':
-      total = množ();
+      temporary = množ();
 
       break;
     case '/':
-      total = dijeljenje();
+      temporary = dijeljenje();
       break;
   }
-  return total;
+  return temporary;
 };
 
 const racunaj = function (operator, num1, num2) {
@@ -132,13 +131,21 @@ document.querySelector('.jednako').addEventListener('click', function () {
 const operatori = document.querySelectorAll('.operator');
 operatori.forEach((funkcija) => {
   funkcija.addEventListener('click', function () {
+    let chain;
     odabranaOperacija = funkcija.id;
+    if (typeof prviBroj === 'number' && typeof noviBroj === 'number') {
+      chain = operate(odabranaOperacija, noviBroj, prviBroj);
+      // return chain;
+    }
+    noviBroj = chain;
     userTyping = false;
     uneseniBrojevi.length = 0;
     // spojeniBrojevi = '';
-    prviBroj = Number(display.textContent);
+    // prviBroj = Number(display.textContent);
+    prviBroj = +spojeniBrojevi;
     display.textContent = '';
     waitingforequal = true;
+
     // noviBroj = 0;
   });
 });
