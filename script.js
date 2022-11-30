@@ -3,15 +3,23 @@
 //selektori
 const display = document.querySelector('.display');
 const broj = document.querySelectorAll('.broj');
+const tocka = document.querySelector('#tocka');
 let userTyping = false;
 
 //računske operacije - BASIC
+let odabranaOperacija;
 
 //ZBRAJANJE
 
+// const zbroj = function (broj1, broj2) {
+//   broj1 = +prompt('Insert number').replace(',', '.');
+//   broj2 = +prompt('Insert number').replace(',', '.');
+//   return broj1 + broj2;
+// };
+
 const zbroj = function (broj1, broj2) {
-  broj1 = +prompt('Insert number').replace(',', '.');
-  broj2 = +prompt('Insert number').replace(',', '.');
+  broj1 = prviBroj;
+  broj2 = noviBroj;
   return broj1 + broj2;
 };
 
@@ -22,53 +30,92 @@ const zbroj = function (broj1, broj2) {
 // };
 
 const minus = function (broj1, broj2) {
-  broj1 = spojeniBrojevi;
-  broj2 = 2;
+  broj1 = prviBroj;
+  broj2 = noviBroj;
   return broj1 - broj2;
 };
 const množ = function (broj1, broj2) {
-  broj1 = +prompt('Insert number').replace(',', '.');
-  broj2 = +prompt('Insert number').replace(',', '.');
+  broj1 = prviBroj;
+  broj2 = noviBroj;
   return broj1 * broj2;
 };
 const dijeljenje = function (broj1, broj2) {
-  broj1 = +prompt('Insert number').replace(',', '.');
-  broj2 = +prompt('Insert number').replace(',', '.');
+  debugger;
+  broj1 = prviBroj;
+  broj2 = noviBroj;
   return broj1 / broj2;
 };
 
+// const operate = function (operator) {
+//   operator = prompt('Which operator');
+//   if (!operator) return;
+
+//   switch (operator.toLowerCase()) {
+//     case '+':
+//       // console.log(zbroj());
+//       display.textContent = zbroj();
+//       break;
+//     case '-':
+//       display.textContent = minus();
+//       break;
+//     case 'x':
+//     case '*':
+//       display.textContent = množ();
+
+//       break;
+//     case '/':
+//       display.textContent = dijeljenje();
+//       break;
+//   }
+// };
+
+let total;
 const operate = function (operator) {
-  operator = prompt('Which operator');
   if (!operator) return;
 
   switch (operator.toLowerCase()) {
     case '+':
       // console.log(zbroj());
-      display.textContent = zbroj();
+      total = zbroj();
+      // return ;      break;
       break;
     case '-':
-      display.textContent = minus();
+      total = minus();
       break;
     case 'x':
     case '*':
-      display.textContent = množ();
+      total = množ();
 
       break;
     case '/':
-      display.textContent = dijeljenje();
+      total = dijeljenje();
       break;
   }
+  return total;
 };
+
+// operate(odabranaOperacija);
+
+let prviBroj;
+let noviBroj;
+
+// operate = function (operator) {};
 
 //pritisak broja registrira broj na displayu
 broj.forEach((num) => {
   num.addEventListener('click', function () {
     // display.textContent = num.id;
     uneseniBrojevi.push(num.id);
+    // prviBroj = num.textContent;
     userTyping = true;
     concatNum();
     display.textContent = spojeniBrojevi;
+    noviBroj = Number(spojeniBrojevi);
   });
+});
+
+tocka.addEventListener('click', function () {
+  uneseniBrojevi.push(tocka.textContent);
 });
 
 // if ((userTyping = false)) {
@@ -76,8 +123,7 @@ broj.forEach((num) => {
 // }
 
 //pohrana unesenih brojeva u array
-const uneseniBrojevi = [];
-const odabranaOperacija = [];
+let uneseniBrojevi = [];
 let spojeniBrojevi = '';
 
 document.querySelector('.jednako').addEventListener('click', function () {
@@ -85,26 +131,37 @@ document.querySelector('.jednako').addEventListener('click', function () {
   userTyping = false;
   uneseniBrojevi.length = 0;
   // display.textContent = `=${spojeniBrojevi}`;
-  let total = minus();
-  display.textContent = `=${total}`;
+  let final = operate(odabranaOperacija);
+  console.log(final);
+  display.textContent = `=${final}`;
+  // resetBrojeva();
 });
 
 const operatori = document.querySelectorAll('.operator');
 operatori.forEach((funkcija) => {
   funkcija.addEventListener('click', function () {
-    odabranaOperacija.push(funkcija.id);
+    odabranaOperacija = funkcija.id;
     userTyping = false;
     uneseniBrojevi.length = 0;
     // spojeniBrojevi = '';
     display.textContent = '';
+    prviBroj = Number(spojeniBrojevi);
+    noviBroj = 0;
   });
 });
+
+const resetBrojeva = function () {
+  prviBroj = 0;
+  noviBroj = 0;
+  uneseniBrojevi.length = 0;
+};
 
 //očisti array kada stisnem C
 document.querySelector('.clear').addEventListener('click', function () {
   uneseniBrojevi.length = 0;
   spojeniBrojevi = '';
   display.textContent = '';
+  noviBroj = 0;
 });
 
 const concatNum = function () {
