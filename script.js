@@ -134,11 +134,3 @@ const concatNum = function () {
     spojeniBrojevi = uneseniBrojevi.join('');
   }
 };
-
-console.log(spojeniBrojevi);
-
-document.querySelector('.minus').addEventListener('click', function () {
-  // let total = minus();
-  // display.textContent = total;
-  spojeniBrojevi = '';
-});
