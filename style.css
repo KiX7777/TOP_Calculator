@@ -41,27 +41,37 @@ body {
   /* width: 10rem; */
   height: 10rem;
   text-align: center;
+  background-color: #444;
   font-weight: bold;
   font-family: 'DS-Digital';
-  box-shadow: inset -1px 0 7px -1px #000000;
+  color: #fff;
+  box-shadow: inset -1px 0 7px -1px black;
   transition: 0.4s all ease;
 }
 
-.button:hover {
-  background-color: lightseagreen;
+.button:active {
+  background-color: white;
 }
-.clear:hover {
+.clear:active {
   background-color: rgba(255, 0, 0, 0.647);
 }
 
-.jednako:hover {
+.operator {
+  background-color: rgba(255, 166, 0, 0.736);
+}
+
+.operator:active {
+  background-color: aqua;
+}
+
+.jednako:active {
   background-color: rgb(5, 195, 5);
 }
 .display {
   grid-column: 1/-1;
-  height: 10rem;
+  height: 12rem;
   padding-right: 1.4rem;
-  background-color: darkgray;
+  background-color: #3e3e3e;
   /* grid-row: 1/; */
   font-size: 5.2rem;
   text-align: right;

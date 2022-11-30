@@ -33,7 +33,7 @@ const dijeljenje = function (broj1, broj2) {
   broj2 = noviBroj;
   return broj1 / broj2;
 };
-
+let accum;
 let total;
 const operate = function (operator) {
   if (!operator) return;
@@ -59,11 +59,34 @@ const operate = function (operator) {
   return total;
 };
 
+const racunaj = function (operator, num1, num2) {
+  switch (operator) {
+    case '+':
+      total = num1 + num2;
+      break;
+    case '-':
+      total = num1 - num2;
+      break;
+    case 'x':
+    case '*':
+      total = num1 * num2;
+
+      break;
+    case '/':
+      total = num1 / num2;
+      break;
+  }
+  waitingforequal = false;
+  return total;
+};
+
+// racunaj(odabranaOperacija, prviBroj, noviBroj);
+
 // operate(odabranaOperacija);
 
 let prviBroj;
 let noviBroj;
-
+let waitingforequal = false;
 // operate = function (operator) {};
 
 //pritisak broja registrira broj na displayu
@@ -80,7 +103,7 @@ broj.forEach((num) => {
 });
 
 tocka.addEventListener('click', function () {
-  uneseniBrojevi.push(tocka.textContent);
+  if (!uneseniBrojevi.includes('.')) uneseniBrojevi.push(tocka.textContent);
 });
 
 // if ((userTyping = false)) {
@@ -96,12 +119,16 @@ document.querySelector('.jednako').addEventListener('click', function () {
   userTyping = false;
   uneseniBrojevi.length = 0;
   // display.textContent = `=${spojeniBrojevi}`;
-  let final = operate(odabranaOperacija);
-  console.log(final);
-  display.textContent = `=${final}`;
+  let final = racunaj(odabranaOperacija, prviBroj, noviBroj);
+  // console.log(final);
+  display.textContent = `=${+final.toFixed(3)}`;
+  prviBroj = final;
   // resetBrojeva();
 });
 
+// if ((waitingforequal = true)) {
+//   prviBroj = racunaj(odabranaOperacija, prviBroj, noviBroj);
+// }
 const operatori = document.querySelectorAll('.operator');
 operatori.forEach((funkcija) => {
   funkcija.addEventListener('click', function () {
@@ -109,9 +136,10 @@ operatori.forEach((funkcija) => {
     userTyping = false;
     uneseniBrojevi.length = 0;
     // spojeniBrojevi = '';
+    prviBroj = Number(display.textContent);
     display.textContent = '';
-    prviBroj = Number(spojeniBrojevi);
-    noviBroj = 0;
+    waitingforequal = true;
+    // noviBroj = 0;
   });
 });
 
@@ -134,3 +162,4 @@ const concatNum = function () {
     spojeniBrojevi = uneseniBrojevi.join('');
   }
 };
+console.log(prviBroj, noviBroj);
