@@ -11,23 +11,11 @@ let odabranaOperacija;
 
 //ZBRAJANJE
 
-// const zbroj = function (broj1, broj2) {
-//   broj1 = +prompt('Insert number').replace(',', '.');
-//   broj2 = +prompt('Insert number').replace(',', '.');
-//   return broj1 + broj2;
-// };
-
 const zbroj = function (broj1, broj2) {
   broj1 = prviBroj;
   broj2 = noviBroj;
   return broj1 + broj2;
 };
-
-// const minus = function (broj1, broj2) {
-//   broj1 = +prompt('Insert number').replace(',', '.');
-//   broj2 = +prompt('Insert number').replace(',', '.');
-//   return broj1 - broj2;
-// };
 
 const minus = function (broj1, broj2) {
   broj1 = prviBroj;
@@ -45,29 +33,6 @@ const dijeljenje = function (broj1, broj2) {
   broj2 = noviBroj;
   return broj1 / broj2;
 };
-
-// const operate = function (operator) {
-//   operator = prompt('Which operator');
-//   if (!operator) return;
-
-//   switch (operator.toLowerCase()) {
-//     case '+':
-//       // console.log(zbroj());
-//       display.textContent = zbroj();
-//       break;
-//     case '-':
-//       display.textContent = minus();
-//       break;
-//     case 'x':
-//     case '*':
-//       display.textContent = množ();
-
-//       break;
-//     case '/':
-//       display.textContent = dijeljenje();
-//       break;
-//   }
-// };
 
 let total;
 const operate = function (operator) {
