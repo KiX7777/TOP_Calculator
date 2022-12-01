@@ -68,8 +68,10 @@ let uneseniBrojevi = [];
 let spojeniBrojevi = '';
 
 const concatNum = function () {
-  if ((userTyping = true)) {
+  if (uneseniBrojevi.length <= 12) {
     spojeniBrojevi = uneseniBrojevi.join('');
+  } else {
+    spojeniBrojevi = uneseniBrojevi.slice(0, 11).join('');
   }
 };
 
@@ -79,7 +81,7 @@ broj.forEach((num) => {
     uneseniBrojevi.push(num.id);
     userTyping = true;
     concatNum();
-    display.textContent = spojeniBrojevi;
+    display.textContent = +spojeniBrojevi;
     noviBroj = Number(spojeniBrojevi);
   });
 });
@@ -114,6 +116,7 @@ operatori.forEach((funkcija) => {
       console.log(total);
       prviBroj = Number(total);
       resetBrojeva();
+      display.textContent = prviBroj;
     }
   });
 });
@@ -125,7 +128,9 @@ const resetBrojeva = function () {
   display.textContent = '';
 };
 
-console.log(prviBroj, noviBroj);
+// if (display.textContent.length > 11) {
+//   display.style.fontSize = '8px';
+// }
 
 // KADA ŽELIM KONAČNI RAČUN
 
@@ -136,6 +141,12 @@ document.querySelector('.jednako').addEventListener('click', function () {
   // display.textContent = `=${spojeniBrojevi}`;
   let final = racunaj(odabranaOperacija, prviBroj, noviBroj);
   // console.log(final);
+  let finalLength = ('' + final).length;
+  console.log(finalLength);
+  if (finalLength > 11) {
+    display.style.fontSize = '3.8rem';
+  }
+
   display.textContent = `=${+final.toFixed(9)}`;
   prviBroj = Number(final);
   noviBroj = '';

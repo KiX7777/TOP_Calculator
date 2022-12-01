@@ -25,15 +25,18 @@ body {
   margin: 0 auto;
   background-color: #0f222c;
   position: relative;
-  top: 15%;
+  padding: 1rem;
+  top: 10%;
   width: 40rem;
   /* padding: 20rem; */
   /* max-height: 100vh; */
   /* text-align: center; */
   grid-template-columns: repeat(4, 1fr);
   display: grid;
-  border: 1px solid white;
+  border-radius: 2rem;
+  /* border: 0.1px solid white; */
   transition: 0.4s all ease;
+  gap: 0.2rem;
 }
 .button {
   /* padding: 4rem; */
@@ -67,6 +70,7 @@ img {
 
 .clear {
   color: red;
+  font-size: 3.2rem;
 }
 .clear:active {
   background-color: rgba(255, 0, 0, 0.647);
