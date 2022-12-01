@@ -93,7 +93,7 @@ broj.forEach((num) => {
 });
 
 tocka.addEventListener('click', function () {
-  if (!uneseniBrojevi.includes('.')) uneseniBrojevi.push(tocka.textContent);
+  if (!uneseniBrojevi.includes('.')) uneseniBrojevi.push('.');
 });
 
 //PRITISAK NA NEKU RAČUNSKU OPERACIJU
