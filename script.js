@@ -5,6 +5,7 @@ const display = document.querySelector('.display');
 const broj = document.querySelectorAll('.broj');
 const tocka = document.querySelector('#tocka');
 const operatori = document.querySelectorAll('.operator');
+const plusminus = document.querySelector('#plusminus');
 
 let userTyping = false;
 
@@ -147,4 +148,8 @@ document.querySelector('.clear').addEventListener('click', function () {
   resetBrojeva();
   prviBroj = '';
   odabranaOperacija = '';
+});
+
+plusminus.addEventListener('click', function () {
+  if (uneseniBrojevi.length === 0) uneseniBrojevi.push('-');
 });
