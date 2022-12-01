@@ -33,6 +33,7 @@ const operate = function (operator, broj1, broj2) {
       break;
     case '/':
       temporary = broj1 / broj2;
+
       break;
   }
   return temporary;
@@ -52,7 +53,12 @@ const racunaj = function (operator, num1, num2) {
 
       break;
     case '/':
-      total = num1 / num2;
+      if (num2 === 0) {
+        alert(`❌❌ CANNOT DIVIDE BY 0 ❌❌`);
+        total = 0;
+      } else {
+        total = num1 / num2;
+      }
       break;
   }
   return total;
@@ -95,9 +101,11 @@ operatori.forEach((funkcija) => {
   funkcija.addEventListener('click', function () {
     userTyping = false;
     //BRIŠE TRENUTNI BROJ I BRIŠE DISPLAY
-
-    //AKO JE PRVI BROJ PRAZAN; POČETAK --> spremi unesene brojeve kao prviBroj
+    if (!isFinite(prviBroj)) {
+      return;
+    }
     if (prviBroj === '') {
+      //AKO JE PRVI BROJ PRAZAN; POČETAK --> spremi unesene brojeve kao prviBroj
       odabranaOperacija = funkcija.id;
       prviBroj = Number(noviBroj);
       resetBrojeva();
@@ -142,7 +150,6 @@ document.querySelector('.jednako').addEventListener('click', function () {
   let final = racunaj(odabranaOperacija, prviBroj, noviBroj);
   // console.log(final);
   let finalLength = ('' + final).length;
-  console.log(finalLength);
   if (finalLength > 11) {
     display.style.fontSize = '3.8rem';
   }
