@@ -49,6 +49,12 @@ body {
   transition: 0.4s all ease;
 }
 
+img {
+  width: 2rem;
+  filter: invert(96%) sepia(5%) saturate(42%) hue-rotate(199deg)
+    brightness(114%) contrast(100%);
+}
+
 .button:active {
   background-color: white;
 }
