@@ -1,3 +1,20 @@
+@import url(//db.onlinewebfonts.com/c/233131eb5b5e4a930cbdfb07008a09e1?family=LCD);
+
+@font-face {
+  font-family: 'LCD';
+  src: url('//db.onlinewebfonts.com/t/233131eb5b5e4a930cbdfb07008a09e1.eot');
+  src: url('//db.onlinewebfonts.com/t/233131eb5b5e4a930cbdfb07008a09e1.eot?#iefix')
+      format('embedded-opentype'),
+    url('//db.onlinewebfonts.com/t/233131eb5b5e4a930cbdfb07008a09e1.woff2')
+      format('woff2'),
+    url('//db.onlinewebfonts.com/t/233131eb5b5e4a930cbdfb07008a09e1.woff')
+      format('woff'),
+    url('//db.onlinewebfonts.com/t/233131eb5b5e4a930cbdfb07008a09e1.ttf')
+      format('truetype'),
+    url('//db.onlinewebfonts.com/t/233131eb5b5e4a930cbdfb07008a09e1.svg#LCD')
+      format('svg');
+}
+
 * {
   box-sizing: border-box;
   margin: 0;
