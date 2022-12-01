@@ -1,11 +1,3 @@
-@import url(//db.onlinewebfonts.com/c/233131eb5b5e4a930cbdfb07008a09e1?family=LCD);
-
-@font-face {
-  font-family: 'LCD';
-  src: url('//db.onlinewebfonts.com/t/233131eb5b5e4a930cbdfb07008a09e1.woff')
-    format('woff');
-}
-
 * {
   box-sizing: border-box;
   margin: 0;
@@ -14,7 +6,7 @@
 
 html {
   font-size: 62.5%;
-  /* font-family: 'LCD'; */
+  font-family: 'DS-DIGITAL';
 }
 
 body {
