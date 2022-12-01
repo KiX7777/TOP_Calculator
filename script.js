@@ -11,27 +11,6 @@ let userTyping = false;
 //računske operacije - BASIC
 let odabranaOperacija;
 
-//ZBRAJANJE
-
-const zbroj = function (broj1, broj2) {
-  return broj1 + broj2;
-};
-
-const minus = function (broj1, broj2) {
-  broj1 = prviBroj;
-  broj2 = noviBroj;
-  return broj1 - broj2;
-};
-const množ = function (broj1, broj2) {
-  broj1 = prviBroj;
-  broj2 = noviBroj;
-  return broj1 * broj2;
-};
-const dijeljenje = function (broj1, broj2) {
-  broj1 = prviBroj;
-  broj2 = noviBroj;
-  return broj1 / broj2;
-};
 let accum;
 let total;
 let temporary;
@@ -78,10 +57,6 @@ const racunaj = function (operator, num1, num2) {
   return total;
 };
 
-// racunaj(odabranaOperacija, prviBroj, noviBroj);
-
-// operate(odabranaOperacija);
-
 let prviBroj = '';
 let noviBroj = '';
 let stisnutoJednako = false;
@@ -112,23 +87,9 @@ tocka.addEventListener('click', function () {
   if (!uneseniBrojevi.includes('.')) uneseniBrojevi.push(tocka.textContent);
 });
 
-// if ((userTyping = false)) {
-//   spojeniBrojevi = '';
-// }
-
-// if ((waitingforequal = true)) {
-//   prviBroj = racunaj(odabranaOperacija, prviBroj, noviBroj);
-// }
-
 //PRITISAK NA NEKU RAČUNSKU OPERACIJU
 operatori.forEach((funkcija) => {
   funkcija.addEventListener('click', function () {
-    // let chain;
-    //PREPOZNAJE KOJA JE OPERACIJA ODABRANA I SPREMA U VARIJABLU
-    // if (typeof prviBroj === 'number' && typeof noviBroj === 'number') {
-    //   chain = operate(odabranaOperacija, noviBroj, prviBroj);
-    //   // return chain;
-    // }
     userTyping = false;
     //BRIŠE TRENUTNI BROJ I BRIŠE DISPLAY
 
@@ -153,13 +114,6 @@ operatori.forEach((funkcija) => {
       prviBroj = Number(total);
       resetBrojeva();
     }
-
-    // prviBroj = +noviBroj;
-    // spojeniBrojevi = '';
-    // noviBroj = '';
-    // waitingforequal = true;
-
-    // noviBroj = 0;
   });
 });
 
