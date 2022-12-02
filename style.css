@@ -118,3 +118,37 @@ img {
   grid-column: 2/3;
   grid-row: 5/6;
 }
+.divide {
+  grid-column: 4/5;
+  grid-row: 5/6;
+}
+
+.del {
+  grid-column: 3/4;
+  grid-row: 5/6;
+}
+.del img {
+  filter: invert(93%) sepia(98%) saturate(4156%) hue-rotate(128deg)
+    brightness(91%) contrast(92%);
+}
+
+.clear {
+  grid-column: 2/3;
+  grid-row: 6/7;
+}
+
+.jednako {
+  grid-column: 3 / span 2;
+  font-size: 3.2rem;
+  border-radius: 2rem;
+}
+
+.plusminus {
+  grid-row: 6/7;
+}
+
+@media (max-width: 435px) {
+  .kalkulator {
+    top: 0;
+  }
+}

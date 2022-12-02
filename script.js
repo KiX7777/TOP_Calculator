@@ -75,11 +75,21 @@ let spojeniBrojevi = '';
 
 const concatNum = function () {
   if (uneseniBrojevi.length <= 12) {
-    spojeniBrojevi = uneseniBrojevi.join('');
+    spojeniBrojevi = uneseniBrojevi.join('').replace(/[^\d.-]/g, '');
   } else {
-    spojeniBrojevi = uneseniBrojevi.slice(0, 11).join('');
+    spojeniBrojevi = uneseniBrojevi
+      .slice(0, 11)
+      .join('')
+      .replace(/[^\d.-]/g, '');
   }
 };
+
+document.querySelector('.del').addEventListener('click', function () {
+  uneseniBrojevi = uneseniBrojevi.slice(0, -1);
+  spojeniBrojevi = spojeniBrojevi.slice(0, -1);
+  noviBroj = (noviBroj / 10) ^ 0;
+  display.textContent = display.textContent.slice(0, -1);
+});
 
 //pritisak broja registrira broj na displayu
 broj.forEach((num) => {
@@ -92,8 +102,43 @@ broj.forEach((num) => {
   });
 });
 
+document.addEventListener('keydown', function (e) {
+  uneseniBrojevi.push(e.key);
+  userTyping = true;
+  concatNum();
+  display.textContent = +spojeniBrojevi;
+  noviBroj = Number(spojeniBrojevi);
+});
+
+document.addEventListener('keydown', function (e) {
+  if (e.key === 'Enter') {
+    console.log(uneseniBrojevi);
+    userTyping = false;
+    stisnutoJednako = true;
+    // display.textContent = `=${spojeniBrojevi}`;
+    let final = racunaj(odabranaOperacija, prviBroj, noviBroj);
+    // console.log(final);
+    let finalLength = ('' + final).length;
+    if (finalLength > 11) {
+      display.style.fontSize = '3.8rem';
+    }
+
+    display.textContent = `=${+final.toFixed(9)}`;
+    prviBroj = Number(final);
+    noviBroj = '';
+    uneseniBrojevi.length = 0;
+    spojeniBrojevi = '';
+  }
+});
+
 tocka.addEventListener('click', function () {
   if (!uneseniBrojevi.includes('.')) uneseniBrojevi.push('.');
+});
+
+document.addEventListener('keydown', function (e) {
+  if (e.key === '.') {
+    if (!uneseniBrojevi.includes('.')) uneseniBrojevi.push('.');
+  }
 });
 
 //PRITISAK NA NEKU RAČUNSKU OPERACIJU
@@ -134,6 +179,7 @@ const resetBrojeva = function () {
   uneseniBrojevi.length = 0;
   spojeniBrojevi = '';
   display.textContent = '';
+  display.style.fontSize = '5.2rem';
 };
 
 // if (display.textContent.length > 11) {
