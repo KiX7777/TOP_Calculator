@@ -148,9 +148,22 @@ img {
 }
 
 @media (max-width: 435px) {
+  html {
+    overflow: hidden;
+  }
   .kalkulator {
     top: 0;
+    margin: 0;
+    height: 100%;
+    padding: 0.8rem;
+    width: 100%;
+    /* overflow: hidden; */
+  }
+  .container {
     height: 100vh;
-    width: 100vw;
+    overflow: hidden;
+  }
+  body {
+    overflow: hidden;
   }
 }
