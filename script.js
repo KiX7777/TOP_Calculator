@@ -95,11 +95,17 @@ document.querySelector('.del').addEventListener('click', function () {
 broj.forEach((num) => {
   num.addEventListener('click', function () {
     document.querySelector('#display').classList.remove('blur-out-contract');
+    if (display.textContent === '') {
+      document.querySelector('#display').classList.add('focus-in-expand');
+    }
     uneseniBrojevi.push(num.id);
     userTyping = true;
     concatNum();
     display.textContent = +spojeniBrojevi;
     noviBroj = Number(spojeniBrojevi);
+  });
+  num.addEventListener('transitionend', function () {
+    document.querySelector('#display').classList.remove('focus-in-expand');
   });
 });
 
@@ -183,7 +189,6 @@ const resetBrojeva = function () {
   spojeniBrojevi = '';
   display.textContent = '';
   display.style.fontSize = '5.2rem';
-  document.querySelector('#display').classList.add('blur-out-contract');
 };
 
 // if (display.textContent.length > 11) {
@@ -215,7 +220,13 @@ document.querySelector('.jednako').addEventListener('click', function () {
 
 //ČIŠĆENJE VRIJEDNOSTI
 document.querySelector('.clear').addEventListener('click', function () {
-  resetBrojeva();
+  // resetBrojeva();
+  noviBroj = '';
+  uneseniBrojevi.length = 0;
+  spojeniBrojevi = '';
+  // display.textContent = '';
+  display.style.fontSize = '5.2rem';
+  document.querySelector('#display').classList.add('blur-out-contract');
   prviBroj = '';
   odabranaOperacija = '';
 });
@@ -223,3 +234,6 @@ document.querySelector('.clear').addEventListener('click', function () {
 plusminus.addEventListener('click', function () {
   if (uneseniBrojevi.length === 0) uneseniBrojevi.push('-');
 });
+// document.querySelector('.clear').addEventListener('transitionend', function () {
+//   document.querySelector('#display').style.backgroundColor = '#FFF';
+// });
