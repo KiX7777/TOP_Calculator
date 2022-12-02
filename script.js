@@ -221,6 +221,7 @@ document.querySelector('.jednako').addEventListener('click', function () {
 //ČIŠĆENJE VRIJEDNOSTI
 document.querySelector('.clear').addEventListener('click', function () {
   // resetBrojeva();
+  odabranaOperacija = '';
   noviBroj = '';
   uneseniBrojevi.length = 0;
   spojeniBrojevi = '';
@@ -228,7 +229,6 @@ document.querySelector('.clear').addEventListener('click', function () {
   display.style.fontSize = '5.2rem';
   document.querySelector('#display').classList.add('blur-out-contract');
   prviBroj = '';
-  odabranaOperacija = '';
 });
 
 plusminus.addEventListener('click', function () {
