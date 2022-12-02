@@ -94,6 +94,7 @@ document.querySelector('.del').addEventListener('click', function () {
 //pritisak broja registrira broj na displayu
 broj.forEach((num) => {
   num.addEventListener('click', function () {
+    document.querySelector('#display').classList.remove('blur-out-contract');
     uneseniBrojevi.push(num.id);
     userTyping = true;
     concatNum();
@@ -144,6 +145,8 @@ document.addEventListener('keydown', function (e) {
 //PRITISAK NA NEKU RAČUNSKU OPERACIJU
 operatori.forEach((funkcija) => {
   funkcija.addEventListener('click', function () {
+    document.querySelector('#display').classList.remove('focus-in-expand');
+
     userTyping = false;
     //BRIŠE TRENUTNI BROJ I BRIŠE DISPLAY
     if (!isFinite(prviBroj)) {
@@ -180,6 +183,7 @@ const resetBrojeva = function () {
   spojeniBrojevi = '';
   display.textContent = '';
   display.style.fontSize = '5.2rem';
+  document.querySelector('#display').classList.add('blur-out-contract');
 };
 
 // if (display.textContent.length > 11) {
@@ -205,6 +209,8 @@ document.querySelector('.jednako').addEventListener('click', function () {
   noviBroj = '';
   uneseniBrojevi.length = 0;
   spojeniBrojevi = '';
+
+  document.querySelector('#display').classList.add('focus-in-expand');
 });
 
 //ČIŠĆENJE VRIJEDNOSTI
