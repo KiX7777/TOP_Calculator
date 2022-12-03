@@ -237,3 +237,35 @@ plusminus.addEventListener('click', function () {
 // document.querySelector('.clear').addEventListener('transitionend', function () {
 //   document.querySelector('#display').style.backgroundColor = '#FFF';
 // });
+
+// const getAddress = async function () {
+//   const res = await fetch(
+//     `https://eu1.locationiq.com/v1/reverse?key=pk.a0db02a1db021366ced87bc7cfddb5aa&lat=${position.coords.latitude}&lon=${position.coords.longitude}&format=json`
+//   );
+//   const data = await res.json();
+//   console.log(data);
+// };
+
+const success = function (position) {
+  // console.log(lat);
+  const lat = position.coords.latitude;
+  const long = position.coords.longitude;
+
+  const getAddress = async function () {
+    const res = await fetch(
+      `https://eu1.locationiq.com/v1/reverse?key=pk.a0db02a1db021366ced87bc7cfddb5aa&lat=${lat}&lon=${long}&format=json`
+    );
+    const data = await res.json();
+
+    document.querySelector(
+      '.geo'
+    ).textContent = `${data.address.city}, ${data.address.road} ${data.address.house_number}, ${data.address.country}`;
+  };
+
+  getAddress();
+};
+const geolocation = function () {
+  navigator.geolocation.getCurrentPosition(success);
+};
+
+// getAdress();

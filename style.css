@@ -21,6 +21,16 @@ body {
   /* position: relative; */
 }
 
+.geo {
+  padding: 1rem;
+  float: left;
+  position: relative;
+  left: 2rem;
+  top: 4rem;
+  z-index: 1;
+  background-color: orange;
+}
+
 .kalkulator {
   margin: 0 auto;
   background-color: #0f222c;
